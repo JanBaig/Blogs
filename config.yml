@@ -1,0 +1,33 @@
+baseURL: ""
+languageCode: en-us
+title: Tinkerin' with Jan
+theme: PaperMod
+
+params:
+  homeInfoParams: 
+    Title: "Welcome"
+    Content: Just a blog where I get to share my learnings
+  socialIcons:
+    - name: gmail 
+      url: "mailto:janatbaig2@gmail..com" 
+    - name: github 
+      url: "https://github.com/JanBaig" 
+
+  ShowBreadCrumbs: true  
+  ShowReadingTime: true 
+
+
+menu: 
+  main:
+  - identifier: categories 
+    name: Categories 
+    url: /categories/ 
+    weight: 10
+  - identifier: tags 
+    name: Tags
+    url: /tags/ 
+    weight: 20  
+  - identifier: archives 
+    name: Archives
+    url: /archives/ 
+    weight: 30  

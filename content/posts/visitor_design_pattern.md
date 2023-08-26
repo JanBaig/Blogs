@@ -15,7 +15,7 @@ The visitor design pattern solves this problem. It allows for the addition of me
 This explanation was developed to help me understand the design pattern and use it as a quick reference before I go on to implement it in future projects. I would be glad if this could help others as well! 
 
 ### Detailed Walkthrough
->Note: The benefits of this design pattern shine when working with a complex codebase. A simplistic example with the help of pseudo-like code is used to aid in the explanation of the workings of the design pattern. If you wish to see the design pattern properly implemented, please take a look at the `main.cpp` and `visitor.h` files. 
+>Note: The benefits of this design pattern shine when working with a complex codebase. A simplistic example with the help of pseudo-like code is used to aid in the explanation of the workings of the design pattern. If you wish to see the design pattern properly implemented, please take a look at the `main.cpp` and `visitor.h` files in this [repo](https://github.com/JanBaig/Visitor-Design-Pattern). 
 
 Say we have two types of animals: dogs and cats
 ```c++
@@ -33,7 +33,12 @@ class MakeSound : public VisitorInterface {
   void visit(const Dog* obj) const { std::cout << "\"Woof\"" << std::endl; }
 }
 ```
-Now that we have a class where all of our animal subclass behaviour for sounds are neatly nested together, it's time to think of how each individual animal subclass might be connected to this new `MakeSound` visitor class. How would an instance of the `Cat` class redirect a call to its `makeSound()` method so that it can be taken from the `MakeSound` visitor class? 
+Now that we have a class where all of our animal subclass behaviour for sounds are neatly nested together, it's time to think of how each individual animal subclass might be connected to this new `MakeSound` visitor class. How would an instance of the `Cat` class redirect a call to its `makeSound()` method so that it can be taken from the `MakeSound` visitor class?  
+
+```c++
+Cat catInstance; 
+catInstance.makeSound() // how would something like this work?
+```
 
 It's done through a polymorphic `accept()` method that each of the individual animal subclasses must implement.
 ```c++
@@ -62,9 +67,9 @@ catInstance.accept(makeSoundVisitor)
 
 Just as how we've created the `MakeSound` visitor class, we can create multiple other visitor classes like `startHunt` or `startSleep`. Therefore, this is how arranging our code using the visitor design pattern makes it more maintainable in the long run.
 
-If you spot any errors in the walkthrough explanation or feel that a better explanation could be provided - please reach out and let me know!
+I've also implemented the pattern for a better understanding incase you'd like to trace the program's execution. It can be found [here](https://github.com/JanBaig/Visitor-Design-Pattern)
 
-I've implemented a quick program using the pattern for better understanding incase you'd like to trace the program's execution. It can be found [here](https://github.com/JanBaig/Visitor-Design-Pattern)
+If you spot any errors in the walkthrough explanation or have any suggestions - please reach out and let me know!
 
 ### References
 - [Crafting Interpreters](https://craftinginterpreters.com/representing-code.html#the-visitor-pattern) by Bob Nystrom

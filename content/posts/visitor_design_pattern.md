@@ -12,7 +12,7 @@ Adding new methods within subclasses works fine if the program being developed i
 The visitor design pattern solves this problem. It allows for the addition of methods into subclasses *without modifying* the existing subclasses themselves. So, if we need all of our subclasses to implement the `makeSound()` method, instead of _individually_ going into each subclass and adding it, we can instead couple all the `makeSound()` implementations for each subclass in one place. That way we only need to visit one section in our code and modify that section alone - effectively resulting in all subclasses having implementations of `makeSound()` without having to visit each and every subclass separately.
 
 ### Purpose
-This small program and explanation (below) were developed to help me understand the design pattern and use it as a quick reference before I go on to implement it in future projects. I would be glad if this could help others as well! 
+This explanation was developed to help me understand the design pattern and use it as a quick reference before I go on to implement it in future projects. I would be glad if this could help others as well! 
 
 ### Detailed Walkthrough
 >Note: The benefits of this design pattern shine when working with a complex codebase. A simplistic example with the help of pseudo-like code is used to aid in the explanation of the workings of the design pattern. If you wish to see the design pattern properly implemented, please take a look at the `main.cpp` and `visitor.h` files. 
@@ -58,15 +58,17 @@ catInstance.accept(makeSoundVisitor)
 -> [In Cat Class] accept(makeSoundVisitor)
 -> [In Cat Class Method] makeSoundVisitor->visit(this) // 'this' is an instance of the Cat class 
 -> [In MakeSound Visitor Class] visit(const Cat* obj) const; // prints "Meow" 
-
 ```
 
 Just as how we've created the `MakeSound` visitor class, we can create multiple other visitor classes like `startHunt` or `startSleep`. Therefore, this is how arranging our code using the visitor design pattern makes it more maintainable in the long run.
 
-If you spot any errors in the walkthrough explanation or feel that a better explanation could be provided  - please reach out and let me know!
+If you spot any errors in the walkthrough explanation or feel that a better explanation could be provided - please reach out and let me know!
 
->Additional Note: [Crafting Interpreters](https://craftinginterpreters.com/representing-code.html#the-visitor-pattern) by Robert Nystrom has greatly helped in my understanding of the concept as well as 
->a youtube [video](https://youtu.be/pL4mOUDi54o) from Derek Banas
+I've implemented a quick program using the pattern for better understanding incase you'd like to trace the program's execution. It can be found [here](https://github.com/JanBaig/Visitor-Design-Pattern)
+
+### References
+- [Crafting Interpreters](https://craftinginterpreters.com/representing-code.html#the-visitor-pattern) by Bob Nystrom
+- This [video](https://youtu.be/pL4mOUDi54o) by Derek Banas
 
 
 <!-- Why we need the interface 
